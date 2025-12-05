@@ -1,148 +1,116 @@
-# DeepMind BR: Insights para Políticas Públicas em Saúde Mental
+# Mental Health Inequality: The Global Anxiety Treatment Gap (2000–2017)
 
-Projeto desenvolvido no contexto do Programa de Empregabilidade da EBAC em parceria com a Semantix.
+Este projeto investiga a desigualdade global no acesso ao tratamento de ansiedade entre 2000 e 2017. Utilizando dados públicos sobre transtornos de ansiedade, foi desenvolvido um pipeline completo de análise, incluindo exploração, tratamento dos dados, construção de métricas e criação de um dashboard final em Power BI.
 
-## 1. Visão Geral do Projeto
+## Objetivos do Projeto
 
-O **DeepMind BR** tem como objetivo utilizar análise de dados e técnicas de machine learning para gerar insights que apoiem a formulação de políticas públicas em saúde mental no Brasil.
+- Identificar o número de pessoas sem tratamento para ansiedade.
+- Calcular o percentual global de indivíduos não tratados.
+- Estimar o volume de pessoas que recebem algum nível de tratamento.
+- Analisar a evolução temporal do tratamento insuficiente.
+- Construir um dashboard claro e objetivo para comunicar os resultados.
 
-A ideia central é combinar dados públicos de saúde, infraestrutura e indicadores socioeconômicos para:
+## Fonte de Dados
 
-- Identificar regiões com maior vulnerabilidade em saúde mental;
-- Mapear possíveis desigualdades no acesso a serviços especializados (como CAPS);
-- Apoiar decisões de priorização de recursos e ações preventivas.
+Os dados utilizados são provenientes do conjunto:
+Global Burden of Disease – Anxiety Disorders Treatment Gap
 
----
+Arquivos utilizados:
+- data/raw/anxiety-disorders-treatment-gap.csv  
+- data/processed/anxiety_treatment_gap_long.csv  
 
-## 2. Descrição Detalhada do Problema
+O dataset contém:
+- Total de pessoas com transtornos de ansiedade
+- Número de pessoas sem tratamento
+- Número de pessoas com tratamento parcial
+- Percentuais de não tratamento ao longo dos anos
 
-Transtornos mentais estão entre as principais causas de incapacidade, sofrimento e perda de qualidade de vida no Brasil. Ao mesmo tempo:
+## Estrutura do Projeto
 
-- O acesso a serviços de saúde mental é desigual entre regiões;
-- Municípios com menor estrutura econômica tendem a ter menos serviços especializados;
-- Muitas decisões de gestão ainda são tomadas com base em percepção, e não em evidências.
+project/  
+ ├── data/  
+ │   ├── raw/                      # dados brutos  
+ │   ├── processed/                # dados tratados  
+ ├── notebooks/  
+ │   ├── 01_coleta_exploracao.ipynb  
+ │   ├── 02_tratamento_feature_engineering.ipynb  
+ ├── src/  
+ │   ├── data_processing.py        # funções ETL  
+ │   ├── modeling.py               # reservado para análises futuras  
+ ├── docs/  
+ │   ├── Mental_Health_Anxiety_Treatment_Gap.pbix  # dashboard Power BI  
+ │   ├── fontes_de_dados.md  
+ ├── reports/  
+ │   ├── placeholder.txt  
+ ├── README.md  
 
-Esse cenário gera um problema central:
+## Visão Geral do Dashboard
 
-> Como identificar, com base em dados, quais regiões e perfis populacionais estão mais vulneráveis em termos de saúde mental e acesso ao cuidado?
+O dashboard final (disponível em docs/Mental_Health_Anxiety_Treatment_Gap.pbix) apresenta:
 
-O **DeepMind BR** propõe justamente atacar esse ponto, organizando e analisando dados públicos para transformar números em **informação útil para tomada de decisão**.
+- 19,5 milhões de pessoas com ansiedade sem tratamento adequado.
+- Cerca de 75% da população com transtornos de ansiedade permanece sem tratamento.
+- Aproximadamente 25% recebem algum nível de tratamento.
+- A taxa de não tratamento nunca ficou abaixo de 70% entre 2000 e 2017.
 
----
+Elementos visuais principais:
+- Indicadores numéricos (KPIs)
+- Distribuição global dos tipos de tratamento
+- Evolução temporal da taxa de não tratamento
+- Comparação entre tratamento total, parcial e ausência de tratamento
 
-## 3. Importância e Relevância do Problema
+## Tecnologias Utilizadas
 
-A saúde mental é um tema sensível, complexo e prioritário em políticas públicas. Quando não é tratada de forma adequada, gera impactos em:
+- Python 3.10  
+- Pandas  
+- Numpy  
+- Jupyter Notebook  
+- Power BI Desktop  
+- Visual Studio Code  
 
-- Qualidade de vida da população;
-- Produtividade e economia;
-- Demandas por internações de urgência;
-- Sobrecarga de serviços de saúde já limitados.
+## Como Reproduzir o Projeto
 
-Uma análise sistemática e baseada em dados permite:
+1. Clone o repositório:
 
-- Identificar regiões “silenciosamente críticas” que não aparecem em manchetes, mas concentram vulnerabilidades;
-- Apoiar a abertura ou reforço de serviços (como CAPS, ambulatórios, equipes de saúde mental na atenção básica);
-- Planejar campanhas de prevenção e promoção da saúde mental focadas em contextos específicos.
+git clone https://github.com/seu-usuario/seu-repositorio.git  
+cd seu-repositorio  
 
-Em resumo, **tratar esse problema com dados** significa apoiar políticas públicas mais justas, eficientes e direcionadas.
+2. Instale as dependências:
 
----
+pip install -r requirements.txt  
 
-## 4. Como a Análise de Dados e Machine Learning Podem Ajudar
+3. Abra os notebooks:
 
-Neste projeto, a análise de dados e o uso de técnicas simples de machine learning serão aplicados para:
+jupyter notebook notebooks/  
 
-1. **Integrar múltiplas fontes de dados públicas**, como:
-   - indicadores de internações relacionadas à saúde mental;
-   - disponibilidade de serviços especializados por região;
-   - variáveis socioeconômicas e demográficas.
+4. Abra o dashboard no Power BI:
 
-2. **Criar indicadores derivados**, por exemplo:
-   - internações por 100 mil habitantes;
-   - número de CAPS por 100 mil habitantes;
-   - relação entre vulnerabilidade socioeconômica e desfechos em saúde mental.
+docs/Mental_Health_Anxiety_Treatment_Gap.pbix  
 
-3. **Explorar padrões e grupos de risco**, usando técnicas como:
-   - clusterização de municípios/estados com perfis semelhantes;
-   - análises comparativas entre regiões.
+## Insights Principais
 
-4. **Gerar visualizações e painéis** que facilitem a interpretação dos resultados por gestores, pesquisadores e público geral.
+- A maioria das pessoas com transtornos de ansiedade não recebe nenhum tratamento.
+- O volume estimado de indivíduos sem tratamento ultrapassa 19 milhões.
+- A taxa global média de não tratamento gira em torno de 75%.
+- Há flutuações temporais, porém a taxa nunca caiu abaixo de 70%.
+- O tratamento parcial é mais comum do que o tratamento completo.
 
-O objetivo não é entregar um modelo “fechado”, mas sim **produzir insights acionáveis**, que possam apoiar decisões reais.
+## Roadmap
 
----
+- Publicar o dashboard no Power BI Service.
+- Criar relatório técnico completo na pasta reports/.
+- Desenvolver narrativa analítica adicional para portfólio.
+- Implementar testes automatizados no pipeline de dados.
 
-## 5. Metodologia (Resumo)
+## Licença
 
-1. **Definição do escopo do problema**  
-   - Foco em vulnerabilidade em saúde mental e acesso a serviços.
+Este projeto está licenciado sob a licença MIT.
 
-2. **Coleta de dados públicos (não confidenciais)**  
-   Exemplos de fontes:
-   - DataSUS / SIH-SUS;
-   - Cadastro Nacional de Estabelecimentos de Saúde (CNES);
-   - IBGE – indicadores populacionais e socioeconômicos.
+## Autora
 
-3. **Organização e tratamento dos dados**
-   - Padronização de nomes de municípios/estados;
-   - Tratamento de valores ausentes;
-   - Criação de indicadores derivados.
+Lara Maciel  
+Profissional multidisciplinar com experiência em ensino, SDR e análise de dados, com foco em visualização, storytelling analítico e projetos aplicados à saúde mental.
 
-4. **Análise Exploratória de Dados (EDA)**
-   - Distribuições, correlações, mapas e comparações regionais;
-   - Identificação de outliers e padrões relevantes.
-
-5. **Aplicação de machine learning (modelo simples)**
-   - Exemplo: clusterização de municípios conforme indicadores de saúde mental e estrutura de serviços;
-   - Interpretação dos grupos formados para gerar insights.
-
-6. **Visualização e comunicação**
-   - Geração de gráficos, tabelas e, se possível, mapas temáticos;
-   - Organização dos resultados em relatório e/ou painel visual.
-
----
-
-## 6. Estrutura do Repositório
-
-- `data/raw/` – dados brutos, diretamente baixados das fontes públicas.
-- `data/processed/` – dados tratados e prontos para análise/modelagem.
-- `notebooks/` – notebooks Jupyter com as etapas do projeto:
-  - `01_coleta_exploracao.ipynb` – coleta inicial e EDA básica;
-  - `02_tratamento_feature_engineering.ipynb` – limpeza e criação de variáveis;
-  - `03_modelagem_insights_politicas.ipynb` – modelagem e geração de insights.
-- `src/` – scripts Python auxiliares:
-  - `data_processing.py` – funções de carregamento e tratamento;
-  - `visualization.py` – funções para gráficos;
-  - `modeling.py` – funções de modelos.
-- `reports/` – relatórios e figuras finais.
-- `docs/` – diagramas, anotações e materiais de apresentação.
-
----
-
-## 7. Declaração de Autorização LGPD
-
-Eu, **[NOME COMPLETO]**, portador(a) da Cédula de Identidade RG n° **[RG]**, inscrito no CPF sob o n° **[CPF]**, autorizo a cessão do meu projeto em favor da Semantix, bem como a divulgação do meu nome como autor responsável pelo projeto, uma vez que será possível incluir esse trabalho em meu portfólio de trabalho.
+Eu, **Lara Maciel Vargas Alves**, portador(a) da Cédula de Identidade RG n° **6007109**, inscrito no CPF sob o n° **034.870.971-41**, autorizo a cessão do meu projeto em favor da Semantix, bem como a divulgação do meu nome como autor responsável pelo projeto, uma vez que será possível incluir esse trabalho em meu portfólio de trabalho.
 
 Nesse sentido, autorizo também a divulgação dos meus contatos telefone e e-mail para a Semantix, tão somente para uso interno com finalidade única de contato em decorrência da elaboração do projeto mencionado.
-
----
-
-## 8. Tecnologias Utilizadas
-
-- Python 3.11
-- Jupyter Notebook
-- Pandas, NumPy
-- Matplotlib
-- Scikit-learn
-
----
-
-## 9. Status do Projeto
-
-- [x] Criação da estrutura inicial do repositório
-- [x] Configuração do ambiente Python e notebooks
-- [ ] Coleta e organização das bases de dados
-- [ ] Análise exploratória
-- [ ] Modelagem e geração de insights
-- [ ] Relatório final e visualizações
